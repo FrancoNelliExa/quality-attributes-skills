@@ -14,13 +14,12 @@ Utilizamos Gemini Deep Research para generar un informe.
 
 ## Ejemplos usados para testing:
 
-```
+
 
   + a
   + b
   + c
 
-```
 
 
 ## Informe Resultante:
