@@ -38,13 +38,45 @@ Este archivo reúne ejemplos de referencia para la formulación de escenarios de
 * **Respuesta:** El desarrollador implementa la interfaz genérica `PaymentProviderAdapter` existente y registra la nueva pasarela mediante inyección de dependencias sin modificar la lógica central del core de checkout.
 * **Medida de respuesta:** Esfuerzo de desarrollo $\le 16\text{ horas-persona}$; cero modificaciones a clases del núcleo de facturación; tests automatizados de regresión pasando al $100\%$ en $\le 5\text{ minutos}$.
 
-### 1.5 Testabilidad (Testability) - Verificación de Reglas Contables
+### 1.5 Desplegabilidad (Deployability) - Incorporación de Nueva Release de Servicio de Terceros (SEI Canónico)
+* **Fuente del estímulo:** Proveedor en el marketplace de componentes / Dueño del producto (*Product Owner*).
+* **Estímulo:** Una nueva versión de un servicio de autenticación/autorización (usado por el producto) está disponible en el marketplace de componentes y el Product Owner decide incorporarla a la release.
+* **Artefacto:** El producto / paquete de release y entorno de despliegue.
+* **Entorno:** Entorno de pruebas y producción (*production / staging environment*).
+* **Respuesta:** El nuevo servicio es probado y desplegado al entorno de producción.
+* **Medida de respuesta:** Desplegado dentro de las 40 horas de tiempo transcurrido (*elapsed time*) y no más de 120 horas-persona de esfuerzo. El despliegue no introduce defectos y no se viola ningún SLA.
+
+### 1.6 Desplegabilidad (Deployability) - Despliegue Continuo con Zero-Downtime y Rollback
+* **Fuente del estímulo:** Desarrollador que envía un commit a la rama principal (`main`).
+* **Estímulo:** Solicitud de despliegue de nueva versión de artefacto de microservicio a producción.
+* **Artefacto:** Pipeline de CI/CD y clúster de Kubernetes en producción.
+* **Entorno:** Operación normal de producción en horario diurno con usuarios activos.
+* **Respuesta:** El pipeline compila, ejecuta pruebas automatizadas, genera imagen de contenedor y ejecuta un despliegue canario (*canary deployment*).
+* **Medida de respuesta:** Tiempo total de despliegue $\le 15\text{ minutos}$; cero tiempo de inactividad (*zero-downtime*); rollback automático en $\le 60\text{ segundos}$ si la tasa de errores HTTP 5xx supera el $0.1\%$.
+
+### 1.7 Testabilidad (Testability) - Verificación de Reglas Contables
 * **Fuente del estímulo:** Ingeniero de QA / Pipeline de Integración Continua (CI).
 * **Estímulo:** Ejecución automatizada de suite de pruebas de regresión e inyección de fallas sobre el cálculo impositivo.
 * **Artefacto:** Motor de liquidación impositiva y microservicio contable.
 * **Entorno:** Pipeline de CI/CD sobre entorno efímero de pruebas.
 * **Respuesta:** El motor expone puntos de inyección de tasas y fechas mediante stubs, permitiendo simular escenarios de borde y recolectar cobertura determinista.
 * **Medida de respuesta:** Cobertura de código en ramas $\ge 90\%$; ejecución total de la suite en $\le 3\text{ minutos}$; identificación de discrepancias con traza observable en el $100\%$ de los fallos.
+
+### 1.8 Integrabilidad (Integrability) - Incorporación de Componente de Filtrado desde Marketplace (SEI Canónico)
+* **Fuente del estímulo:** Marketplace de componentes / Arquitecto que decide incorporar el módulo.
+* **Estímulo:** Un nuevo componente de filtrado de datos (*data filtering component*) está disponible en el marketplace de componentes y se decide integrarlo al sistema.
+* **Artefacto:** El sistema (capa de conectores, adaptadores e interfaces de datos).
+* **Entorno:** Tiempo de integración y despliegue (*integration / build time*).
+* **Respuesta:** El nuevo componente externo es adaptado, integrado con los módulos existentes del sistema y desplegado.
+* **Medida de respuesta:** Integración y despliegue completados en $\le 1\text{ mes}$ de tiempo de calendario y con no más de $1\text{ persona-mes}$ de esfuerzo (*person-month*).
+
+### 1.9 Safety (Seguridad Funcional / Inocuidad) - Falla de Sensor en Monitoreo de Pacientes (SEI Canónico)
+* **Fuente del estímulo:** Sensor del sistema de monitoreo de pacientes (*sensor hardware*).
+* **Estímulo:** Falla al reportar un valor crítico para la vida (*life-critical value*) tras 100 ms (omisión que genera un peligro o *hazard*).
+* **Artefacto:** Sistema de monitoreo de pacientes (*Patient monitoring system*).
+* **Entorno:** Operación normal de supervisión clínica en tiempo real.
+* **Respuesta:** El sistema registra la falla técnica en logs de auditoría, activa una luz de advertencia en la consola del operador y conmuta inmediatamente al sensor de respaldo (*backup* de menor fidelidad) para prevenir daños al paciente.
+* **Medida de respuesta:** El sistema reanuda la monitorización del paciente utilizando el sensor de respaldo en no más de $300\text{ ms}$, previniendo cualquier peligro para la vida del paciente.
 
 ---
 

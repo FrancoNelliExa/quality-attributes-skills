@@ -14,7 +14,11 @@ Esta skill está especializada en **auditar la completitud metodológica de esce
 
 Al recibir un escenario propuesto por el usuario:
 
-1. **Extracción y Evaluación de las 6 Partes:**
+1. **Extracción, Clasificación y Evaluación de las 6 Partes:**
+   * Identifica y clasifica el atributo de calidad predominante consultando [Taxonomía SEI](../sei-quality-attributes/references/sei-taxonomy.md).
+   * **Criterio Clave (Safety vs. Availability):** Si el escenario trata sobre preservar vidas humanas, valores críticos para la vida (*life-critical values*), estados seguros (*fail-safe*) o conmutación por falla a sensores/modos de respaldo en dispositivos médicos o críticos, clasifícalo estrictamente como **Safety (Seguridad Funcional / Inocuidad)** y NO como Disponibilidad.
+   * **Criterio Clave (Integrability vs. Modifiability):** Si el escenario trata sobre incorporar, ensamblar y adaptar un componente externo, adquirido en un *marketplace* o provisto por terceros (COTS), midiendo tiempo y esfuerzo de integración (personas-mes, meses de calendario), clasifícalo como **Integrabilidad (Integrability)** y NO como Modificabilidad general.
+   * **Criterio Clave (Deployability vs. Modifiability):** Si el escenario trata sobre empaquetar, probar, liberar e incorporar una release/versión a producción, pipelines CI/CD, tiempos transcurridos (*elapsed time*), horas-persona de despliegue, rollback o cumplimiento de SLA sin defectos, clasifícalo estrictamente como **Desplegabilidad (Deployability)** y NO como Modificabilidad.
    * Consulta las heurísticas en [Reglas de Auditoría](../sei-quality-attributes/references/audit-rules.md).
    * Evalúa cada componente:
      * **Fuente:** ¿Está identificado el sujeto o actor específico?
@@ -35,7 +39,7 @@ Al recibir un escenario propuesto por el usuario:
    * Aplica las Reglas de Inferencia Segura:
      * Infiere el estado operativo canónico para el entorno si falta (*"Operación normal"* o *"Pico de carga"*).
      * Mapea *"el sistema"* al componente de frontera o subsistema de procesamiento adecuado.
-     * Reemplaza medidas vagas por métricas estándar (latencia en percentiles, TPS, %, RTO/RPO, horas-hombre).
+     * Reemplaza medidas vagas por métricas estándar (latencia en percentiles, TPS, %, RTO/RPO, horas transcurridas / horas-persona de despliegue, horas-hombre de modificación).
 
 4. **Entrega de la Versión Corregida:**
    * Provee la versión formal reparada en tabla de 6 filas y formato narrativo.

@@ -17,8 +17,8 @@ Al recibir una lista de requerimientos no funcionales o la descripción global d
 1. **Estructuración Jerárquica en 4 Niveles:**
    * Consulta las especificaciones en [Esquema del Árbol de Utilidad](../sei-quality-attributes/references/utility-tree-schema.md).
    * **Nivel 0 (Raíz):** Define el nodo de *Utilidad General* del sistema (propósito central y salud del negocio).
-   * **Nivel 1 (Atributos de Calidad):** Agrupa en categorías de alto nivel (Rendimiento, Disponibilidad, Seguridad, Modificabilidad, etc.).
-   * **Nivel 2 (Sub-atributos / Refinamientos):** Subdivide cada atributo en aspectos técnicos concretos (Latencia, Throughput, Tolerancia a fallos, Cifrado, Extensibilidad).
+   * **Nivel 1 (Atributos de Calidad):** Agrupa en categorías de alto nivel (Rendimiento, Disponibilidad, Desplegabilidad, Seguridad, Modificabilidad, Safety / Inocuidad, Integrabilidad, etc.).
+   * **Nivel 2 (Sub-atributos / Refinamientos):** Subdivide cada atributo en aspectos técnicos concretos (Latencia, Throughput, Tolerancia a fallos, Despliegue continuo/zero-downtime, Cifrado, Extensibilidad).
    * **Nivel 3 (Escenarios Hojas):** Formula escenarios específicos con código identificador (`ESC-01`, `ESC-02`, etc.).
 
 2. **Priorización Bidimensional del SEI:**

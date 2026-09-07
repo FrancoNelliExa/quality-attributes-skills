@@ -1,7 +1,7 @@
 ---
 name: sei-quality-attributes
 description: >-
-  Genera escenarios de atributos de calidad de 6 partes según el Software Engineering Institute (SEI), audita y completa escenarios existentes aplicando reglas de inferencia segura, y elabora árboles de utilidad (Utility Trees) priorizados con la matriz bidimensional (Importancia de Negocio, Riesgo Técnico) de ATAM. Activar cuando el usuario solicite definir requerimientos no funcionales, redactar o evaluar escenarios de calidad (Disponibilidad, Rendimiento, Seguridad, Modificabilidad, etc.), auditar completitud de requisitos de arquitectura o construir un Utility Tree.
+  Genera escenarios de atributos de calidad de 6 partes según el Software Engineering Institute (SEI), audita y completa escenarios existentes aplicando reglas de inferencia segura, y elabora árboles de utilidad (Utility Trees) priorizados con la matriz bidimensional (Importancia de Negocio, Riesgo Técnico) de ATAM. Activar cuando el usuario solicite definir requerimientos no funcionales, redactar, clasificar o evaluar escenarios de calidad (Disponibilidad, Rendimiento, Desplegabilidad, Modificabilidad, Seguridad, Safety / Inocuidad, Integrabilidad, etc.), auditar completitud de requisitos de arquitectura o construir un Utility Tree.
 ---
 
 # Atributos de Calidad y Árboles de Utilidad (SEI / ATAM)
@@ -14,18 +14,21 @@ Esta skill proporciona los procedimientos rigurosos del Software Engineering Ins
 
 La skill detecta automáticamente la intención del usuario y opera en uno de tres modos:
 
-1. **Modo Generación:** Formular escenarios formales de 6 partes a partir de descripciones informales o requerimientos de negocio.
+1. **Modo Generación y Clasificación:** Identificar el atributo de calidad y formular escenarios formales de 6 partes a partir de descripciones informales o requerimientos de negocio.
 2. **Modo Auditoría y Completitud:** Analizar un escenario provisto, diagnosticar deficiencias y reescribirlo aplicando reglas de inferencia segura.
 3. **Modo Árbol de Utilidad (Utility Tree):** Estructurar jerárquicamente los requerimientos del sistema y priorizarlos mediante la matriz bidimensional SEI `(Importancia, Riesgo)`.
 
 ---
 
-## Modo 1: Generación de Escenarios (Template SEI de 6 Partes)
+## Modo 1: Generación y Clasificación de Escenarios (Template SEI de 6 Partes)
 
-Cuando el usuario solicite formular o redactar un escenario para cualquier atributo de calidad (Rendimiento, Disponibilidad, Modificabilidad, Seguridad, Escalabilidad, Testabilidad, Usabilidad, Interoperabilidad):
+Cuando el usuario solicite formular, redactar o identificar/clasificar el atributo de un escenario (Rendimiento, Disponibilidad, Desplegabilidad, Modificabilidad, Seguridad, Safety / Inocuidad, Integrabilidad, Escalabilidad, Testabilidad, Usabilidad, Interoperabilidad):
 
-1. **Identificación del Atributo y Tácticas:**
-   * Clasifica el atributo de calidad predominante.
+1. **Identificación del Atributo y Tácticas (SEI / SAIP 4ta Edición):**
+   * Clasifica rigurosamente el atributo de calidad predominante consultando la [Taxonomía SEI y Matriz de Desambiguación](./references/sei-taxonomy.md).
+   * **Criterio de Desambiguación Safety vs. Disponibilidad:** Si el escenario involucra pacientes, valores críticos para la vida (*life-critical values*), conmutación a modos seguros (*fail-safe*) o sensores de respaldo de menor fidelidad en sistemas médicos, de transporte o industriales para prevenir daños corporales, muerte o peligros catastróficos (*hazards*), el atributo es estrictamente **Safety (Seguridad Funcional / Inocuidad)**, NO Disponibilidad ni Seguridad general.
+   * **Criterio de Desambiguación Integrabilidad vs. Modificabilidad:** Si el escenario describe incorporar o ensamblar un componente desarrollado de forma independiente o adquirido externamente (*component marketplace*, módulo COTS, librería de terceros) para que funcione armónicamente en el sistema, evaluando el esfuerzo (ej. personas-mes) y tiempo de calendario para la integración, el atributo es **Integrabilidad (Integrability)**, NO Modificabilidad (reservada para la alteración o refactorización de código interno propio).
+   * **Criterio de Desambiguación Desplegabilidad vs. Modificabilidad/Integrabilidad:** Si el escenario involucra la incorporación de una versión/release (propia o de terceros), pruebas de liberación, pipelines CI/CD, despliegue a producción o staging, tiempos transcurridos de despliegue (*elapsed time*), esfuerzo de despliegue (*person-hours*), rollback o despliegues sin defectos y sin violar SLAs, el atributo es **Desplegabilidad (Deployability)**.
    * Consulta las tácticas y métricas estándar en [Taxonomía SEI](./references/sei-taxonomy.md).
 2. **Construcción de las 6 Dimensiones:**
    * **Fuente del estímulo:** Especifica la entidad precisa (interna, externa, usuario, sensor, atacante).

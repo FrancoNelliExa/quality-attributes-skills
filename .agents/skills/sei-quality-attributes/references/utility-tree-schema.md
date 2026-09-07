@@ -36,12 +36,15 @@ El árbol se estructura en una jerarquía estricta de cuatro niveles descendente
 ```
 
 1. **Nivel 0 - Raíz (Utilidad):** Representa el valor global, la adecuación y la excelencia operativa del sistema bajo análisis.
-2. **Nivel 1 - Atributos de Calidad de Alto Nivel:** Las grandes propiedades no funcionales según el SEI (Rendimiento, Disponibilidad, Seguridad, Modificabilidad, Escalabilidad, Testabilidad, Usabilidad, Interoperabilidad).
+2. **Nivel 1 - Atributos de Calidad de Alto Nivel:** Las grandes propiedades no funcionales según el SEI (Rendimiento, Disponibilidad, Desplegabilidad, Seguridad, Modificabilidad, Safety / Inocuidad, Integrabilidad, Escalabilidad, Testabilidad, Usabilidad, Interoperabilidad).
 3. **Nivel 2 - Sub-atributos o Refinamientos:** Categorías específicas o aspectos concretos dentro de cada atributo. Ejemplos:
    * *Rendimiento:* Latencia en horario pico, Rendimiento transaccional (Throughput), Tiempo de arranque.
    * *Disponibilidad:* Resiliencia ante fallas de hardware, Recuperación ante caída de red, Preservación de transacciones en vuelo.
+   * *Desplegabilidad:* Despliegue zero-downtime, Tiempo transcurrido de release (*elapsed time*), Rollback automatizado, Incorporación de componentes de terceros sin defectos.
    * *Seguridad:* Confidencialidad en reposo/tránsito, Prevención de intrusiones, Trazabilidad/Auditoría forense.
-   * *Modificabilidad:* Incorporación de terceros, Cambios en esquemas de datos, Soporte de nuevos canales cliente.
+   * *Safety:* Prevención de peligros (*hazards*), Mitigación ante fallas de sensores críticos para la vida, Transición a modo seguro (*fail-safe* / sensores de respaldo).
+   * *Integrabilidad:* Compatibilidad con componentes de terceros/marketplace, Esfuerzo de adaptación de módulos COTS, Estandarización de interfaces y conectores.
+   * *Modificabilidad:* Refactorización modular, Cambios en esquemas de datos, Soporte de nuevos contratos de API.
 4. **Nivel 3 - Escenarios Especificados (Hojas):** Requerimientos concretos expresados como escenarios de calidad de 6 partes (o resumen representativo), acompañados por un identificador único (ej. `ESC-01`, `ESC-02`) y su tupla de priorización.
 
 ---

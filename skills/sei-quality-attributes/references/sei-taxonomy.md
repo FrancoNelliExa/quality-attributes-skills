@@ -54,7 +54,33 @@ Capacidad del sistema de procesar solicitudes y eventos dentro de límites tempo
 
 ---
 
-### 2.3 Modificabilidad (Modifiability)
+### 2.3 Desplegabilidad (Deployability)
+Capacidad de un artefacto, paquete de software o conjunto de ejecutables de ser desplegado e integrado en un entorno operativo o de pruebas de manera ágil, predecible, con mínimo esfuerzo humano, sin interrupciones no planificadas y sin introducir defectos ni violar SLAs (SEI / *Software Architecture in Practice*, 4ta Edición).
+
+* **Fuentes Típicas:** Dueño del producto (*Product Owner*), desarrolladores, operadores DevOps / SRE, marketplace o repositorio de componentes de terceros, sistema de CI/CD automatizado.
+* **Estímulos Típicos:** 
+  * Nueva versión o release de un componente propio o de terceros (ej. desde marketplace) disponible para ser incorporada y desplegada.
+  * Solicitud de despliegue de un parche correctivo (*hotfix*) o nueva funcionalidad.
+  * Solicitud de actualización de configuración o infraestructura.
+* **Artefactos Impactados:** Paquete de release, ejecutables, imágenes de contenedor, pipeline de CI/CD, scripts de despliegue/IaC, entorno de staging y producción.
+* **Entornos Típicos:** Entorno de pruebas/staging, entorno de producción en operación normal (*zero-downtime*), ventana de mantenimiento o proceso de despliegue continuo.
+* **Respuestas del Sistema (Tácticas):** 
+  * Pipeline automatizado de empaquetado, análisis y pruebas de regresión/humo.
+  * Despliegues controlados e incrementales: *Blue/Green Deployment*, *Canary Releases*, *Rolling Updates*.
+  * Verificación de salud y compatibilidad post-despliegue.
+  * Rollback automatizado e inmediato ante anomalías o degradación de SLAs.
+  * Desacoplamiento de despliegue y liberación de funcionalidad mediante *Feature Flags*.
+* **Medidas de Respuesta Estándar:**
+  * **Tiempo Transcurrido (*Elapsed Time*):** Tiempo de punta a punta desde la decisión/disparador hasta la operación estable en producción (ej. $\le 40\text{ horas transcurridas}$, $\le 15\text{ minutos}$).
+  * **Esfuerzo Humano de Despliegue:** Horas-persona dedicadas al proceso de prueba, integración y despliegue (ej. $\le 120\text{ horas-persona}$, cero intervención manual requerida).
+  * **Defectos introducidos y SLAs:** Cero defectos introducidos en el entorno destino; cero violaciones a los acuerdos de nivel de servicio (SLAs).
+  * **Tiempo de Inactividad (*Deployment Downtime*):** Cero minutos de indisponibilidad (despliegue *zero-downtime*).
+  * **Tiempo de Rollback:** Reversión completa a la versión estable previa en $\le 3\text{ minutos}$.
+  * **Frecuencia de Despliegue:** Múltiples despliegues exitosos por día sin impacto operativo.
+
+---
+
+### 2.4 Modificabilidad (Modifiability)
 Facilidad y costo con los que el sistema puede evolucionar ante cambios en requerimientos, tecnología o contexto regulatorio.
 
 * **Fuentes Típicas:** Desarrolladores de software, arquitectos, analistas de negocio, reguladores normativos, clientes.
@@ -70,7 +96,7 @@ Facilidad y costo con los que el sistema puede evolucionar ante cambios en reque
 
 ---
 
-### 2.4 Seguridad (Security)
+### 2.5 Seguridad (Security)
 Capacidad del sistema de resistir intentos de uso no autorizado, daño malicioso y denegación de servicio, salvaguardando confidencialidad, integridad y disponibilidad.
 
 * **Fuentes Típicas:** Atacante externo no autenticado, usuario interno malicioso, botnet distribuida, script automatizado de escaneo.
@@ -86,7 +112,7 @@ Capacidad del sistema de resistir intentos de uso no autorizado, daño malicioso
 
 ---
 
-### 2.5 Escalabilidad (Scalability)
+### 2.6 Escalabilidad (Scalability)
 Capacidad del sistema de manejar un incremento significativo en el volumen de trabajo (tráfico, conexiones o datos) añadiendo recursos computacionales de forma proporcional.
 
 * **Fuentes Típicas:** Crecimiento masivo de usuarios, expansión a nuevos mercados, campañas de marketing viral, incremento de sensores conectados.
@@ -101,7 +127,7 @@ Capacidad del sistema de manejar un incremento significativo en el volumen de tr
 
 ---
 
-### 2.6 Testabilidad (Testability)
+### 2.7 Testabilidad (Testability)
 Facilidad con la que el software permite descubrir y aislar defectos mediante la ejecución de pruebas automatizadas y la observabilidad de sus estados internos.
 
 * **Fuentes Típicas:** Ingenieros de pruebas (QA), desarrolladores, agentes de integración continua (CI/CD).
@@ -116,7 +142,7 @@ Facilidad con la que el software permite descubrir y aislar defectos mediante la
 
 ---
 
-### 2.7 Usabilidad (Usability)
+### 2.8 Usabilidad (Usability)
 Grado en el que el sistema permite a los usuarios alcanzar objetivos específicos con eficacia, eficiencia y satisfacción.
 
 * **Fuentes Típicas:** Usuarios finales novatos, usuarios expertos, usuarios con capacidades especiales.
@@ -131,14 +157,76 @@ Grado en el que el sistema permite a los usuarios alcanzar objetivos específico
 
 ---
 
-### 2.8 Interoperabilidad (Interoperability)
+### 2.9 Interoperabilidad (Interoperability)
 Capacidad de intercambiar información útil y ejecutar servicios cooperativos de manera transparente con sistemas externos heterogéneos.
 
 * **Fuentes Típicas:** Sistemas externos de terceros, servicios gubernamentales, socios comerciales, pasarelas de pago.
 * **Estímulos Típicos:** Envío o recepción de mensajes en formatos estándar (JSON, XML, FHIR, ISO 8583), cambio de versión de API de socio.
-* **Artefactos Impactados:** Adaptadores de integración, servicios de transformación de esquemas, bus de integración.
+* **Artefactos Impactados:** Adaptadores de comunicación, servicios de transformación de esquemas, bus de integración.
 * **Entornos Típicos:** Redes corporativas seguras, internet pública, entornos multi-proveedor.
 * **Respuestas del Sistema (Tácticas):** Mapear contratos de datos, gestionar compatibilidad retroactiva, manejar fallas transitorias de socios externos con *Circuit Breaker*.
 * **Medidas de Respuesta Estándar:**
   * **Tasa de Éxito de Conversión:** $100\%$ de mensajes válidos parseados sin truncamiento.
   * **Compatibilidad de Versiones:** Soportar versión $N$ y $N-1$ de la API simultáneamente durante un período de gracia de 6 meses.
+
+---
+
+### 2.10 Integrabilidad (Integrability)
+Capacidad del sistema de ensamblar e integrar armónicamente componentes de software desarrollados de manera independiente o adquiridos de terceros (ej. desde un *component marketplace*, módulos COTS o librerías externas) para que operen correctamente dentro de la arquitectura, evaluando el esfuerzo y tiempo requeridos para lograr dicha integración (*Software Architecture in Practice*, Bass, Clements y Kazman).
+
+* **Fuentes Típicas:** Marketplace de componentes, proveedores de librerías/módulos COTS de terceros, arquitectos o integradores de software.
+* **Estímulos Típicos:** Disponibilidad en el marketplace de un nuevo componente o librería especializada (ej. filtrado de datos, motor de renderizado, códec) que se decide incorporar al producto existente.
+* **Artefactos Impactados:** Capa de integración, conectores, adaptadores (*wrappers*), interfaces públicas del sistema y pipelines de build/ensamble.
+* **Entornos Típicos:** Tiempo de integración, ensamble de componentes y pruebas de integración/despliegue (*integration / build time*).
+* **Respuestas del Sistema (Tácticas):** Proveer interfaces desacopladas, emplear patrones adaptadores o plugins, mapear modelos de datos del componente externo a los modelos internos, encapsular dependencias externas.
+* **Medidas de Respuesta Estándar:**
+  * **Esfuerzo Humano de Integración:** Horas-persona o meses-persona requeridos para integrar y validar el componente (ej. $\le 1\text{ persona-mes}$, $\le 40\text{ horas-persona}$).
+  * **Tiempo de Calendario (*Elapsed Calendar Time*):** Plazo total de integración (ej. $\le 1\text{ mes}$).
+  * **Modificaciones al Componente:** Cero modificaciones requeridas en el código fuente del componente adquirido.
+  * **Compatibilidad y Regresión:** Cero defectos de integración detectados en el ensamble.
+* **Escenario Canónico Textual (SAIP):**
+  > *"A new data filtering component has become available in the component marketplace. The new component is integrated into the system and deployed in 1 month, with no more than 1 person-month of effort."*
+
+---
+
+### 2.11 Safety (Seguridad Funcional / Inocuidad)
+Capacidad del sistema de operar y responder ante fallas de tal manera que se eviten peligros (*hazards*) que amenacen la vida humana, causen lesiones corporales o desaten catástrofes físicas o ambientales (*Software Architecture in Practice*, Bass, Clements y Kazman).
+
+* **Fuentes Típicas:** Sensores biomédicos o industriales, microcontroladores, actuadores de hardware, temporizadores de seguridad (*watchdogs*), ambiente físico supervisado.
+* **Estímulos Típicos:**
+  * Un sensor no reporta un valor vital crítico dentro de un umbral temporal estricto (ej. omisión de lectura vital tras $100\text{ ms}$).
+  * Lecturas de telemetría fuera de umbrales biológicos/físicos tolerables.
+  * Falla o malfuncionamiento de un actuador físico (ej. frenos ABS, infusión de fármacos, timón de vuelo).
+* **Artefactos Impactados:** Sistemas de monitoreo de pacientes, controladores automotrices o de aviónica, sistemas de control de plantas nucleares/químicas, controladores de robots quirúrgicos o industriales.
+* **Entornos Típicos:** Operación normal de supervisión clínica, monitoreo en tiempo real de pacientes críticos, navegación de aeronaves, operación industrial con presencia humana.
+* **Respuestas del Sistema (Tácticas):**
+  * Detectar la omisión o valor anómalo antes de que se convierta en un accidente.
+  * Registrar la falla técnica en logs de auditoría médica/forense.
+  * Activar alertas de operador críticas inmediatas (luces de advertencia en consola, alarmas audibles).
+  * Conmutar por falla (*failover*) a un componente de respaldo o de menor fidelidad (**Degradación Segura / *Fail-Safe State***) para preservar la vida.
+* **Medidas de Respuesta Estándar:**
+  * **Tiempo de Transición a Estado Seguro / Respaldo:** El sistema conmuta y retoma el monitoreo con el sensor o modo de respaldo dentro del límite temporal seguro (ej. en $\le 300\text{ ms}$).
+  * **Prevención de Peligros (*Hazard Prevention*):** Cero accidentes, lesiones físicas o pérdida de vidas derivadas del fallo de software.
+  * **Disponibilidad Segura:** Mantener la función de monitoreo vital activa sin interrupción superior al umbral fisiológico tolerable.
+* **Escenario Canónico Textual (SAIP):**
+  > *"A sensor in the patient monitoring system fails to report a life-critical value after 100 ms. The failure is logged, a warning light is illuminated on the console, and a backup (lower-fidelity) sensor is engaged. The system monitors the patient using the backup sensor after no more than 300 ms."*
+
+---
+
+## 3. Matriz de Desambiguación Arquitectónica (SEI)
+
+Para evitar clasificaciones erróneas entre atributos de calidad con solapamientos superficiales:
+
+### 3.1 Safety (Inocuidad / Seguridad Funcional) vs. Disponibilidad (*Availability*) vs. Seguridad (*Security*)
+* **Safety:** Su objetivo existencial es la **protección de la vida humana, salud física y prevención de peligros catastróficos (*hazards*)**. Si el escenario involucra pacientes, valores críticos para la vida (*life-critical values*), conmutación a modos seguros (*fail-safe*) o sensores de respaldo de menor fidelidad en sistemas médicos, de transporte o industriales, el atributo primario es **Safety**, NO Disponibilidad ni Seguridad.
+* **Disponibilidad:** Se ocupa del porcentaje de tiempo operativo (*uptime*), tiempos de recuperación (MTTR/RTO) y redundancia ante caídas comunes de IT en sistemas de negocio, donde una falla no implica peligro directo de muerte o lesiones físicas.
+* **Seguridad (*Security* / Ciberseguridad):** Se ocupa de resistir **ataques intencionales y deliberados de actores humanos hostiles** (*hackers*, usuarios maliciosos, malware) protegiendo confidencialidad, integridad y acceso no autorizado.
+
+### 3.2 Integrabilidad (*Integrability*) vs. Modificabilidad (*Modifiability*) vs. Desplegabilidad (*Deployability*)
+* **Integrabilidad:** Enfocada en la capacidad de ensamblar e interactuar con **componentes de terceros, módulos COTS o componentes adquiridos en un *marketplace***. Su foco es la compatibilidad de interfaces y el esfuerzo/tiempo necesario para integrarlos (medido típicamente en personas-mes y meses de calendario). *Ejemplo canónico: Integrar un componente de filtrado de datos del marketplace en 1 mes con $\le 1$ persona-mes de esfuerzo.*
+* **Modificabilidad:** Enfocada en el **desarrollo, alteración y refactorización del código fuente propio interno** por parte de los desarrolladores del sistema (lógica de clases, acoplamiento modular). Sus métricas clave son horas-hombre de desarrollo, clases afectadas y prevención de efectos secundarios (*ripple effect*).
+* **Desplegabilidad:** Enfocada en el **pasaje operativo de releases probadas hacia entornos de producción o staging** mediante pipelines automatizados de CI/CD. Sus métricas clave son el tiempo transcurrido total (*elapsed time*), horas de despliegue, ausencia de tiempo de inactividad (*zero-downtime*), rollback ágil y 0 defectos o violaciones de SLAs durante la liberación.
+
+### 3.3 Rendimiento (*Performance*) vs. Escalabilidad (*Scalability*)
+* **Rendimiento:** Latencia, tiempos de respuesta y throughput bajo un perfil de carga dado con **recursos fijos** o preestablecidos.
+* **Escalabilidad:** Capacidad de absorber un aumento considerable y sostenido de demanda mediante el **agregado elástico de recursos computacionales** (autoescalado horizontal/vertical) manteniendo el rendimiento.
