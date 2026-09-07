@@ -136,6 +136,7 @@ Los requerimientos base dados a la IA para contextualizar y generar las especifi
 > change, and no side effects will occur.
 
 
+---
 
 La suite de pruebas fue testeada con **6 casos de prueba con ejemplos conocidos y de referencia bibliográfica**. El detalle completo de los prompts, trazas de razonamiento y salidas generadas se encuentra documentado en [tests/test_cases.md](./tests/test_cases.md):
 
