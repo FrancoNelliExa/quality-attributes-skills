@@ -82,7 +82,7 @@ Los requerimientos base dados a la IA para contextualizar y generar las especifi
 ## Ejemplos usados para testing:
 
 
-PERFORMANCE
+`PERFORMANCE`
 
 > Five hundred users initiate 2,000 requests in a 30-second interval, under normal operations. The system processes all of the requests with an average latency of two seconds.
 
