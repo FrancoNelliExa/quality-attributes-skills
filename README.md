@@ -82,17 +82,17 @@ Los requerimientos base dados a la IA para contextualizar y generar las especifi
 ## Ejemplos usados para testing:
 
 
-> PERFORMANCE
+PERFORMANCE
 
-Five hundred users initiate 2,000 requests in a 30-second interval, under normal operations. The system processes all of the requests with an average latency of two seconds.
+> Five hundred users initiate 2,000 requests in a 30-second interval, under normal operations. The system processes all of the requests with an average latency of two seconds.
 
 DEPLOYABILITY
-A new release of an authentication/authorization service (which our product uses) is made
-available in the component marketplace and the product owner decides to
-incorporate this version into the release. The new service is tested and
-deployed to the production environment within 40 hours of elapsed time
-and no more than 120 person-hours of effort. The deployment introduces no
-defects and no SLA is violated.”
+> A new release of an authentication/authorization service (which our product uses) is made
+> available in the component marketplace and the product owner decides to
+> incorporate this version into the release. The new service is tested and
+> deployed to the production environment within 40 hours of elapsed time
+> and no more than 120 person-hours of effort. The deployment introduces no
+> defects and no SLA is violated.”
 
 INTEGRABILIDAD
 
