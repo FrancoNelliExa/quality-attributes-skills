@@ -6,11 +6,11 @@ Utilizamos Gemini Deep Research para generar un informe.
 
 
 ## Ejemplos dados a la IA:
-```
+
   - a
   - b
   - c
-```
+
 
 ## Ejemplos usados para testing:
 
