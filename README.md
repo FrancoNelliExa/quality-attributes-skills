@@ -81,6 +81,61 @@ Los requerimientos base dados a la IA para contextualizar y generar las especifi
 
 ## Ejemplos usados para testing:
 
+
+> PERFORMANCE
+
+Five hundred users initiate 2,000 requests in a 30-second interval, under normal operations. The system processes all of the requests with an average latency of two seconds.
+
+DEPLOYABILITY
+A new release of an authentication/authorization service (which our product uses) is made
+available in the component marketplace and the product owner decides to
+incorporate this version into the release. The new service is tested and
+deployed to the production environment within 40 hours of elapsed time
+and no more than 120 person-hours of effort. The deployment introduces no
+defects and no SLA is violated.”
+
+INTEGRABILIDAD
+
+A new data filtering component has become available in
+the component marketplace. The new component is integrated into the
+system and deployed in 1 month, with no more than 1 person-month of
+effort.
+
+SECURITY
+
+A disgruntled employee at a remote location attempts to
+improperly modify the pay rate table during normal operations. The
+unauthorized access is detected, the system maintains an audit trail, and
+the correct data is restored within one day.
+
+TESTEABILITY
+
+The developer
+completes a code unit during development and performs a test sequence
+whose results are captured and that gives 85 percent path coverage within
+30 minutes.
+
+USABILIDAD
+
+The user downloads a new application
+and is using it productively after 2 minutes of experimentation.
+
+SEGURIDAD salud
+A sensor in the patient monitoring system
+fails to report a life-critical value after 100 ms. The failure is logged, a
+warning light is illuminated on the console, and a backup (lower-fidelity)
+sensor is engaged. The system monitors the patient using the backup sensor
+after no more than 300 ms.
+
+MODIFICABILIDAD
+
+A developer
+wishes to change the user interface. This change will be made to the code
+at design time, it will take less than three hours to make and test the
+change, and no side effects will occur.
+
+
+
 La suite de pruebas fue testeada con **6 casos de prueba con ejemplos conocidos y de referencia bibliográfica**. El detalle completo de los prompts, trazas de razonamiento y salidas generadas se encuentra documentado en [tests/test_cases.md](./tests/test_cases.md):
 
 ```text
