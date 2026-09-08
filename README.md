@@ -2,14 +2,13 @@
 
 ### Autores: Nicola Satragni - Franco Nelli
 **Cátedra:** Ingeniería de Software 1  
-**Repositorio GitHub:** [FrancoNelliExa/quality-attributes-skills](https://github.com/FrancoNelliExa/quality-attributes-skills)  
-**Entrega:** Repositorio GitHub y archivo comprimido `.zip` adjunto.
+**Repositorio GitHub:** [FrancoNelliExa/quality-attributes-skills](https://github.com/FrancoNelliExa/tp3_ingenieria_de_software)  
 
 ---
 
 ## Resumen del Proyecto
 
-Este proyecto implementa una suite completa de **Skills (estilo Claude / Antigravity)** especializadas en la ingeniería de requerimientos no funcionales y la evaluación de arquitecturas de software bajo los estándares rigurosos del **Software Engineering Institute (SEI)** y el método **ATAM (*Architecture Tradeoff Analysis Method*)** (*Software Architecture in Practice*, Bass, Clements & Kazman).
+Este proyecto implementa una suite completa de **Skills (Claude / Antigravity)** especializadas en la ingeniería de requerimientos no funcionales y la evaluación de arquitecturas de software bajo los estándares rigurosos del **Software Engineering Institute (SEI)** y el método **ATAM (*Architecture Tradeoff Analysis Method*)** (*Software Architecture in Practice*, Bass, Clements & Kazman).
 
 A partir de un informe técnico exhaustivo generado con Gemini Deep Research ([INFORME.md](./INFORME.md)), se diseñaron, implementaron y testearon las capacidades para:
 
@@ -29,7 +28,6 @@ Para brindar máxima flexibilidad y compatibilidad multiplataforma (Claude Code,
 .
 ├── INFORME.md                           # Dossier de investigación y especificación técnica (Deep Research)
 ├── README.md                            # Documentación integral del proyecto y entrega
-├── quality-attributes-skills.zip        # Paquete comprimido para entrega alternativa
 ├── tests/
 │   ├── test_cases.md                    # Suite de 6 casos de prueba con trazas completas de ejecución
 │   └── validate_skills.py               # Script de pruebas automatizadas y aserciones de calidad
@@ -213,8 +211,8 @@ El desarrollo de estas skills se fundamenta en la investigación técnica detall
 ```
 
 * **Eje 1 (Fundamentación Teórica del SEI):** Análisis formal de las 6 partes (Fuente, Estímulo, Artefacto, Entorno, Respuesta, Medida de Respuesta). Taxonomía de estímulos y métricas para Disponibilidad, Rendimiento, Modificabilidad, Seguridad, Escalabilidad, Testabilidad, Usabilidad e Interoperabilidad. Algoritmo sistemático de 4 pasos para auditar completitud y aplicar reglas de inferencia segura. Estructura jerárquica del Utility Tree y matriz de priorización del ATAM.
-* **Eje 2 (Arquitectura de Skills estilo Claude / Antigravity):** Pautas de diseño para LLMs: activación semántica contextual mediante la clave `description`, patrones de autoverificación antes de emitir la salida, restricciones negativas estrictas y técnica de *progressive context loading* utilizando `references/` para mantener el contexto limpio de tokens redundantes.
-* **Eje 3 (Blueprint de Implementación y Casos de Prueba):** Especificación de las skills especializadas, definición de la suite de pruebas sobre casos de estudio conocidos y directivas de entrega para el repositorio y empaquetado zip.
+* **Eje 2 (Arquitectura de Skills tipo Claude / Antigravity):** Pautas de diseño para LLMs: activación semántica contextual mediante la clave `description`, patrones de autoverificación antes de emitir la salida, restricciones negativas estrictas y técnica de *progressive context loading* utilizando `references/` para mantener el contexto limpio de tokens redundantes.
+* **Eje 3 (Blueprint de Implementación y Casos de Prueba):** Especificación de las skills especializadas, definición de la suite de pruebas sobre casos de estudio conocidos y directivas de entrega para el repositorio.
 
 Para consultar el dossier técnico completo, revisar directamente el archivo [INFORME.md](./INFORME.md).
 
@@ -237,8 +235,7 @@ Las skills son detectadas automáticamente por agentes compatibles (Claude Code,
 
 ---
 
-## Empaquetado y Entrega
+## Entrega
 
 El proyecto se encuentra versionado y listo para su evaluación mediante:
-1. **Repositorio GitHub:** [https://github.com/FrancoNelliExa/quality-attributes-skills](https://github.com/FrancoNelliExa/quality-attributes-skills)
-2. **Archivo ZIP:** `quality-attributes-skills.zip` generado en la raíz del repositorio, conteniendo todo el código, skills, referencias, tests y documentación.
+**Repositorio GitHub:** [https://github.com/FrancoNelliExa/quality-attributes-skills](https://github.com/FrancoNelliExa/quality-attributes-skills)
